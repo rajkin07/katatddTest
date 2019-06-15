@@ -48,4 +48,21 @@ public class KataTddTest {
         assertEquals(KataTdd.Add("7\n1,9"), 17);
     }
 
+    //ForthIteration
+    //4.Support different delimiters
+    @Test
+    public void supportForDelimiterByUser() {
+        assertEquals(25, KataTdd.Add("//;\n10;5;3;7"));
+    }
+
+    @Test
+    public void separatorByUserWithNoNumbersReturnsZero() throws Exception {
+        assertEquals(0, KataTdd.Add("//;\n"));
+    }
+
+    @Test
+    public void separatorWithOnlyOneNumber() throws Exception {
+        assertEquals(9, KataTdd.Add("//;\n9"));
+    }
+
 }
