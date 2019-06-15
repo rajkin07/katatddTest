@@ -36,5 +36,16 @@ public class KataTddTest {
         assertEquals(KataTdd.Add("1,2,3,44,5,6,8,9,07,999,1016"), 2100);
     }
 
+    //ThirdIteration
+    //3.Allow the Add method to handle new lines between numbers (instead of commas).
+    @Test
+    public void newlineBetweenNumbers() {
+        assertEquals(KataTdd.Add("7\n3"), 10);
+    }
+
+    @Test
+    public void newLineBetweenNoAndCommaSeparator() {
+        assertEquals(KataTdd.Add("7\n1,9"), 17);
+    }
 
 }

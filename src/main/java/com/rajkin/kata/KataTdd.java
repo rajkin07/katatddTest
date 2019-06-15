@@ -9,7 +9,7 @@ public class KataTdd {
         if (text.isEmpty()) {
             return 0;
         }
-        Stream<String> numbersToSum = Arrays.stream(text.split(","));
+        Stream<String> numbersToSum = Arrays.stream(text.split(",|\n"));
         return numbersToSum.mapToInt(Integer::parseInt).sum();
     }
 
