@@ -102,10 +102,17 @@ public class KataTddTest {
     public void ignoreNumbersAbove1000() {
         assertEquals(KataTdd.Add("1002"), 0);
     }
+
     @Test
     public void ignoreNumbersAbove1000Multipal() {
         assertEquals(KataTdd.Add("40,10002,1077"), 40);
     }
 
+    //SeventhIteration
+    //7.Delimiters can be of any length
+    @Test
+    public void acceptsDelimiterOfAnyLength() {
+        assertEquals(KataTdd.Add("//[***]\n7***5***3"), 15);
+    }
 
 }

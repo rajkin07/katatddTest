@@ -1,5 +1,6 @@
 package com.rajkin.kata;
 
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -50,7 +51,7 @@ public class KataTdd {
     private static KataTdd parseInput(String input) {
         if (input.startsWith("//")) {
             String[] splitString = input.split("\n", 2);
-            return new KataTdd(splitString[0].substring(2), splitString[1]);
+            return new KataTdd(delimiterAnyLength(splitString[0]), splitString[1]);
         } else {
             return new KataTdd(",|\n", input);
         }
@@ -58,6 +59,7 @@ public class KataTdd {
 
     /**
      * Refactored Method for Modularisation.
+     *
      * @return
      */
     private IntStream numberAddition() {
@@ -80,5 +82,21 @@ public class KataTdd {
             throw new IllegalArgumentException("negative number: " + negativeNumbers);
         }
     }
+
+    /**
+     * Method Allows any no of delimiters.
+     * @param line
+     * @return
+     */
+    private static String delimiterAnyLength(String line) {
+        String delimiter = line.substring(2);
+        if (delimiter.startsWith("[")) {
+            delimiter = delimiter.substring(1, delimiter.length() - 1);
+        }
+        return Pattern.quote(delimiter);
+    }
+
+
+
 
 }
