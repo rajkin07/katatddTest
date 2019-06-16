@@ -1,6 +1,8 @@
 package com.rajkin.kata;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -66,5 +68,33 @@ public class KataTddTest {
     }
 
     //Modularize Code and Refactoring.
+
+    //FifthIteration
+    //5.Calling Add with a negative number will throw an exception.
+    @Test(expected = IllegalArgumentException.class)
+    public void exceptionOnNegativeNumber() {
+        KataTdd.Add("-3");
+    }
+
+    //component that intercepts test method calls and set exception before and after Method.
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void negativeNotAllowed() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("negative number: -7,-77,-5");
+
+        KataTdd.Add("-7,7,-77,99,-5");
+    }
+
+    @Test
+    public void negativeNotAllowed2() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("negative number: -7");
+
+        KataTdd.Add("//;\n-7;4");
+    }
+
 
 }

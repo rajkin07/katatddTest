@@ -1,5 +1,7 @@
 package com.rajkin.kata;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class KataTdd {
@@ -30,7 +32,12 @@ public class KataTdd {
             return 0;
         }
 
-        return parseInput(text).numberAddition();
+        return parseInput(text).nonStaticAddtion();
+    }
+
+    private int nonStaticAddtion() {
+        byforgetNegativeNumbers();
+        return numberAddition().sum();
     }
 
     /**
@@ -48,12 +55,21 @@ public class KataTdd {
         }
     }
 
-    private int numberAddition() {
+    private IntStream numberAddition() {
         if (numbers.isEmpty()) {
-            return 0;
+            return IntStream.empty();
         } else {
             return Stream.of(numbers.split(delimiter))
-                    .mapToInt(Integer::parseInt).sum();
+                    .mapToInt(Integer::parseInt);
+        }
+    }
+
+    private void byforgetNegativeNumbers() {
+        String negativeNumbers = numberAddition().filter(n -> n < 0)
+                .mapToObj(Integer::toString)
+                .collect(Collectors.joining(","));
+        if (!negativeNumbers.isEmpty()) {
+            throw new IllegalArgumentException("negative number: " + negativeNumbers);
         }
     }
 
