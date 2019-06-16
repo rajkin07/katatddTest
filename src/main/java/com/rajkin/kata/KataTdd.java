@@ -55,6 +55,10 @@ public class KataTdd {
         }
     }
 
+    /**
+     * Refactored Method for Modularisation.
+     * @return
+     */
     private IntStream numberAddition() {
         if (numbers.isEmpty()) {
             return IntStream.empty();
@@ -64,6 +68,9 @@ public class KataTdd {
         }
     }
 
+    /**
+     * Throw exception On negative value and return all negative value in exception message.
+     */
     private void byforgetNegativeNumbers() {
         String negativeNumbers = numberAddition().filter(n -> n < 0)
                 .mapToObj(Integer::toString)
