@@ -115,4 +115,24 @@ public class KataTddTest {
         assertEquals(KataTdd.Add("//[***]\n7***5***3"), 15);
     }
 
+    //EightIteration
+    //8.Allow multiple delimiters.
+    @Test
+    public void acceptsMultipleDelimiters() {
+        assertEquals(KataTdd.Add("//[-][;]\n7-2;1"), 10);
+
+    }
+
+    //9.multiple delimiters with length longer than one char.
+    @Test
+    public void acceptsMultipleDelimitersLongerThan1Chr() {
+        assertEquals(KataTdd.Add("//[--][...]\n1--7...4"), 12);
+    }
+
+    //Added case with dot delimiter failing before.
+    @Test
+    public void usesDelimiterSepcified() {
+        assertEquals(KataTdd.Add("//.\n7.77.777"), (7 + 77 + 777));
+    }
+
 }
