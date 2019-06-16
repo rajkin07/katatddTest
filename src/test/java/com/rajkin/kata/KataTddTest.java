@@ -35,7 +35,7 @@ public class KataTddTest {
 
     @Test
     public void unknownAmountOFNnumersAsInput() {
-        assertEquals(KataTdd.Add("1,2,3,44,5,6,8,9,07,999,1016"), 2100);
+        assertEquals(KataTdd.Add("1,2,3,44,5,6,8,9,07,999,999,17"), 2100);
     }
 
     //ThirdIteration
@@ -94,6 +94,17 @@ public class KataTddTest {
         expectedException.expectMessage("negative number: -7");
 
         KataTdd.Add("//;\n-7;4");
+    }
+
+    //SixthIteration
+    //6. Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
+    @Test
+    public void ignoreNumbersAbove1000() {
+        assertEquals(KataTdd.Add("1002"), 0);
+    }
+    @Test
+    public void ignoreNumbersAbove1000Multipal() {
+        assertEquals(KataTdd.Add("40,10002,1077"), 40);
     }
 
 

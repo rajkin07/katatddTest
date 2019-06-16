@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 public class KataTdd {
 
+    public static final int MAX_VALUE = 1000;
     private String delimiter;
     private String numbers;
 
@@ -64,7 +65,7 @@ public class KataTdd {
             return IntStream.empty();
         } else {
             return Stream.of(numbers.split(delimiter))
-                    .mapToInt(Integer::parseInt);
+                    .mapToInt(Integer::parseInt).filter(n -> n < MAX_VALUE);
         }
     }
 
