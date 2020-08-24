@@ -10,7 +10,7 @@ public class Jmail {
 
     public static void main(String[] args) {
         // Recipient's email ID needs to be mentioned.
-        String to = "Hlb-customer@apectraining.com";
+        String to = "Hlb-servicedesk@apectraining.com";
 
         //String to = "rajeshbhai@datadotlabs.com";
 
